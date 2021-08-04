@@ -1,10 +1,7 @@
 """Bank URL Configuration"""
 
-from django.urls import path
-
-from food.views import list_food, detail_food
+from django.urls import path, include
 
 urlpatterns = [
-    path('', list_food),
-    path('<int:id>', detail_food),
+    path('food/', include('food.urls')),
 ]

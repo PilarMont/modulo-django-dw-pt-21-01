@@ -1,18 +1,14 @@
 """Food app views"""
 
-import random
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
-names = ["Mauricio", "Paco", "Jorge", "Ximena"]
-food = ["Pizza", "Sushi", "Alitas", "Burritos"]
+food = []
 
 
 def list_food(request):
     """Return a list of food"""
     context = {
-        "mi_nombre": random.choice(names),
         "food": food
     }
 
@@ -26,3 +22,13 @@ def detail_food(request, id):
     }
 
     return render(request, "detail.html", context)
+
+
+def create_food(request):
+    """Create a food"""
+    if request.method == 'POST':
+        name = request.POST['name']
+        food.append(name)
+        return redirect('food:list')
+
+    return render(request, "create.html")

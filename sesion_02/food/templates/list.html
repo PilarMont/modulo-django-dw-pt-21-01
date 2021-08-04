@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Comida de {{ mi_nombre }}</h1>
+  <h1 class="title">Comida favorita</h1>
+  <a href="{% url 'food:create' %}">Crear nuevo</a>
   {% if food %}
     <ul>
       {% for item in food %}
@@ -11,4 +12,5 @@
   {% else %}
     <p>No hay comida</p>
   {% endif %}
+  <a href="{% url 'food:detail' 1 %}">Ir a detalle de Sushi </a>
 {% endblock content %}

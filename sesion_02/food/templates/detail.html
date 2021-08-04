@@ -6,4 +6,7 @@
 
 {% block content %}
 <h1>Detalle de {{ food }}</h1>
+
+<a href="{% url 'food:list' %}">Volver</a>
+
 {% endblock content %}
